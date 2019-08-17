@@ -1,0 +1,1 @@
+A library database management app using Node, express, sequelize, sqlite and pug.
