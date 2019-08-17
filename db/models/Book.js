@@ -9,16 +9,52 @@ module.exports = (sequelize) => {
             autoIncrement: true
         },
         title: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
+            validate: {
+                notNull: {
+                    msg: 'Please give a value for "Title".'
+                },
+                notEmpty: {
+                    msg: 'Please give a value for "Title".'
+                }
+            }
         },
         author: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
+            validate: {
+                notNull: {
+                    msg: 'Please give a value for "Author".'
+                },
+                notEmpty: {
+                    msg: 'Please give a value for "Author".'
+                }
+            }
         },
         genre: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
+            validate: {
+                notNull: {
+                    msg: 'Please give a value for "Genre".'
+                },
+                notEmpty: {
+                    msg: 'Please give a value for "Genre".'
+                }
+            }
         },
         year: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            validate: {
+                notNull: {
+                    msg: 'Please give a value for "Year".'
+                },
+                isInt: {
+                    msg: 'Please provide a year'
+                }
+            }
         }
     }, {
         sequelize
