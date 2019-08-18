@@ -1,0 +1,25 @@
+extends layout.pug
+
+block content
+    h1 New Book
+    form(method="POST", action="/books/new")
+        h1(class="error") Oooops!
+        ul(class="error")
+            each error in errors
+                li= error.message
+        p
+            label(for="title") Title
+            input(name="title", type="text", id="title", value=`${title}`)
+        p
+            label(for="author") Author
+            input(name="author", type="text", id="author", value=`${author}`)
+        p
+            label(for="genre") Genre
+            input(name="genre", type="text", id="genre", value=`${genre}`)
+        p
+            label(for="year") Year
+            input(name="year", type="text", id="year", value=`${year}`)
+        p
+            input(type="submit", value="Create New Book")
+        p
+            a(class="button", href="/books") Cancel

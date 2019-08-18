@@ -52,7 +52,11 @@ module.exports = (sequelize) => {
                     msg: 'Please give a value for "Year".'
                 },
                 isInt: {
-                    msg: 'Please provide a year'
+                    msg: 'Please provide a value for "year"'
+                },
+                len: {
+                    args: [4],
+                    msg: 'Please provide a valid "year" with 4 digits'
                 }
             }
         }
