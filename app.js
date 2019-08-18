@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 
 // Grabs all files needed for the routes
 const { getHomePage } = require('./routes/index');
-const { getNewBook, postNewBook } = require('./routes/books');
+const { getNewBook, getBookDetail, postNewBook } = require('./routes/books');
 
 // Sets up sequelize
 const db = require('./db');
@@ -28,6 +28,7 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => res.redirect('/books'));
 app.get('/books', getHomePage);
 app.get('/books/new', getNewBook);
+app.get('/books/:id', getBookDetail);
 app.post('/books/new', postNewBook);
 
 // Listens to the port

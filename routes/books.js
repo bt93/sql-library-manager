@@ -32,5 +32,22 @@ module.exports = {
                 });
             }
         })();
+    },
+
+    getBookDetail: (req, res) => {
+        console.log(req.params.id);
+
+        (async () =>{
+            const book = await Book.findOne({
+                where: {
+                    id: req.params.id
+                }
+            });
+            
+            res.render('book-detail', {
+                title: book.dataValues.title,
+                data: book.dataValues
+            });
+        })();
     }
 }
