@@ -25,7 +25,7 @@ module.exports = {
                 res.render('form-error', {
                     title: 'New Book', 
                     errors: error.errors, 
-                    title: title,
+                    bookTitle: title,
                     author: author,
                     genre: genre,
                     year: year
@@ -35,7 +35,6 @@ module.exports = {
     },
 
     getBookDetail: (req, res) => {
-        console.log(req.params.id);
 
         (async () =>{
             const book = await Book.findOne({
@@ -43,11 +42,44 @@ module.exports = {
                     id: req.params.id
                 }
             });
-            
+
             res.render('book-detail', {
                 title: book.dataValues.title,
                 data: book.dataValues
             });
+        })();
+    },
+
+    postBookDetail: (req, res) => {
+
+        (async () =>{
+            const id = req.params.id
+            const title = req.body.title;
+            const author = req.body.author;
+            const genre = req.body.genre;
+            const year = req.body.year;
+
+            try {
+                const book = await Book.update({
+                    title: title,
+                    author: author,
+                    genre: genre,
+                    year: year
+                }, {
+                    where: {id: id}
+                });
+    
+                res.redirect('/books');
+            } catch (error) {
+                res.render('form-error-update', {
+                    title: 'Update Book', 
+                    errors: error.errors, 
+                    bookTitle: title,
+                    author: author,
+                    genre: genre,
+                    year: year
+                });
+            }
         })();
     }
 }
