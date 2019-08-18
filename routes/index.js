@@ -1,10 +1,10 @@
 module.exports = {
     getHomePage: (req, res) => {
-        res.send('test');
-        
+        // Grabs all books in database and displays them through the pug template
         (async () => {
             const books = await Book.findAll();
-            console.log(books.map(book => book.toJSON()));
+            
+            res.render('books', {title: "Books", books: books});
         })();
     }
 }
