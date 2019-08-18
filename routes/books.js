@@ -1,9 +1,12 @@
 module.exports = {
+    // Renders new book form
     getNewBook: (req, res) => {
         res.render('new-book', {title: 'New Book'});
     },
 
+    // Post Details on the new book form and catches errors
     postNewBook: (req, res) => {
+
         (async () => {
             const title = req.body.title;
             const author = req.body.author;
@@ -34,6 +37,7 @@ module.exports = {
         })();
     },
 
+    // Renders pages that already exsist
     getBookDetail: (req, res) => {
 
         (async () =>{
@@ -50,6 +54,7 @@ module.exports = {
         })();
     },
 
+    // Updates exsisting book and catches errors
     postBookDetail: (req, res) => {
 
         (async () =>{
@@ -80,6 +85,22 @@ module.exports = {
                     year: year
                 });
             }
+        })();
+    },
+
+    // Deletes the corresponding book
+    postDeleteBook: (req, res) => {
+        
+        (async () => {
+            const id = req.params.id
+
+            const book = await Book.destroy({
+                where: {
+                    id: id
+                }
+            });
+
+            res.redirect('/books');
         })();
     }
 }

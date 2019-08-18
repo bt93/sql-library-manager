@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 
 // Grabs all files needed for the routes
 const { getHomePage } = require('./routes/index');
-const { getNewBook, getBookDetail, postNewBook, postBookDetail } = require('./routes/books');
+const { getNewBook, getBookDetail, postNewBook, postBookDetail, postDeleteBook } = require('./routes/books');
 
 // Sets up sequelize
 const db = require('./db');
@@ -31,6 +31,7 @@ app.get('/books/new', getNewBook);
 app.get('/books/:id', getBookDetail);
 app.post('/books/new', postNewBook);
 app.post('/books/:id', postBookDetail);
+app.post('/books/:id/delete', postDeleteBook);
 
 // Listens to the port
 app.listen(port, () => console.log(`App listening at port ${port}`));

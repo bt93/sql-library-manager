@@ -17,3 +17,9 @@ block content
             input(name="year", type="text", id="year", value=`${data.year}`)
         p
             input(type="submit", value="Update Book")
+    form(method="POST", action=`/books/${data.id}/delete`, onsubmit="return confirm('Do you really want to delete this book?');")
+        p
+                a(class="button", href="/books") Cancel
+        p
+            input(type="submit", value="Delete Book")
+    
