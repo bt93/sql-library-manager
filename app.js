@@ -33,5 +33,19 @@ app.post('/books/new', postNewBook);
 app.post('/books/:id', postBookDetail);
 app.post('/books/:id/delete', postDeleteBook);
 
+app.use((req, res, next) => {
+    const err = new Error('Not Found');
+    err.status = 404;
+
+    next(err);
+});
+
+app.use((err, req, res, next) => {
+    console.error(err.message, err.status);
+
+    res.status(err.status);
+    res.render('page-not-found', {title: "Not Found", err: err});
+});
+
 // Listens to the port
 app.listen(port, () => console.log(`App listening at port ${port}`));

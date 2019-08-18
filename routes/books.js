@@ -46,11 +46,16 @@ module.exports = {
                     id: req.params.id
                 }
             });
-
-            res.render('book-detail', {
-                title: book.dataValues.title,
-                data: book.dataValues
-            });
+            
+            // If id exsist, render page and catch if it doesn't
+            try {
+                res.render('book-detail', {
+                    title: book.dataValues.title,
+                    data: book.dataValues
+                });
+            } catch (error) {
+                res.render('page-not-found', {title: 'Not Found'});
+            }
         })();
     },
 
