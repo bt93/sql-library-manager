@@ -4,7 +4,7 @@ module.exports = {
         (async () => {
             const books = await Book.findAll();
             
-            res.render('books', {title: "Books", books: books});
+            res.render('index', {title: "Books", books: books});
         })();
     }
 }

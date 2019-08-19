@@ -49,7 +49,7 @@ module.exports = {
             
             // If id exsist, render page and catch if it doesn't
             try {
-                res.render('book-detail', {
+                res.render('update-book', {
                     title: book.dataValues.title,
                     data: book.dataValues
                 });
