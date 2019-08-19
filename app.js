@@ -7,13 +7,15 @@ const port = 3000;
 const bodyParser = require('body-parser');
 
 // Grabs all files needed for the routes
-const { getHomePage } = require('./routes/index');
+const { getHomePage, searchBook } = require('./routes/index');
 const { getNewBook, getBookDetail, postNewBook, postBookDetail, postDeleteBook } = require('./routes/books');
 
 // Sets up sequelize
 const db = require('./db');
 const { Book } = db.models;
+const { Op } = db.Sequelize;
 global.Book = Book;
+global.Op = Op;
 
 // Syncs sequelize with the app
 (async() => await db.sequelize.sync())();
@@ -29,6 +31,7 @@ app.get('/', (req, res) => res.redirect('/books?page=1'));
 app.get('/books?', getHomePage);
 app.get('/books/new', getNewBook);
 app.get('/books/:id', getBookDetail);
+app.get('/search?', searchBook);
 app.post('/books/new', postNewBook);
 app.post('/books/:id', postBookDetail);
 app.post('/books/:id/delete', postDeleteBook);

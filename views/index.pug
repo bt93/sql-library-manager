@@ -2,8 +2,16 @@ extend layout.pug
 
 block content
     h1 Books
+    form(method="GET", action=`/search`)
+        p
+            label(for="search") Search
+            input(type="text", id="search" name="q")
+            input(type="submit", value="Submit")
+            
     p
         a(class="button" href="books/new") Create New Book
+    p
+        a(class="button", href="/books?page=1") Home
     table
         thead
             tr
@@ -31,6 +39,6 @@ block content
                         a(href=`/books?page=${index + 1}` class="active")= index + 1
                     else
                         a(href=`/books?page=${index + 1}`)= index + 1
-            if (currentPage <= Math.round(totalPages))
+            if (currentPage < Math.round(totalPages))
                 li
                     a(href=`/books?page=${page = currentPage + 1}`) Next
