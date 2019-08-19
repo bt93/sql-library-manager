@@ -19,10 +19,15 @@ block content
                     td= book.author
                     td= book.genre
                     td= book.year
-    ul
-        - for (let index = 0; index <= totalPages; index++)
+    div(class="pagination")
+        ul
             li
-                if (index === currentPage - 1)
-                    a(href=`/books?page=${index + 1}` class="active")= index + 1
-                else
-                    a(href=`/books?page=${index + 1}`)= index + 1
+                a(href="#") Prev
+            - for (let index = 0; index <= totalPages; index++)
+                li
+                    if (index === currentPage - 1)
+                        a(href=`/books?page=${index + 1}` class="active")= index + 1
+                    else
+                        a(href=`/books?page=${index + 1}`)= index + 1
+            li
+                a(href="#") Next
