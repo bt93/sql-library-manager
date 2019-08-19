@@ -2,13 +2,12 @@ module.exports = {
     getHomePage: (req, res) => {
         // Grabs all books in database and displays them through the pug template
         (async () => {
-            const pageSize = 10;
-            const totalPages = await Book.count() / pageSize;
-            const currentPage = await req.query.page - 1;
-            const offset = currentPage * pageSize;
-            const limit = offset + pageSize;
+            const itemsPerPage = 10;
+            const totalPages = await Book.count() / itemsPerPage;
+            const currentPage = await req.query.page;
+            const offset = (currentPage * itemsPerPage) - itemsPerPage;
 
-            const books = await Book.findAll({offset: offset, limit: limit});
+            const books = await Book.findAll({offset: offset, limit: itemsPerPage});
             const booksPerPage = await books;
             
             if (booksPerPage.length > 0) {

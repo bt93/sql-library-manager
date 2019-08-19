@@ -22,7 +22,7 @@ module.exports = {
                     year: year
                 });
 
-                res.redirect('/books');
+                res.redirect('/');
             } catch (error) {
 
                 res.render('form-error', {
@@ -79,7 +79,7 @@ module.exports = {
                     where: {id: id}
                 });
     
-                res.redirect('/books');
+                res.redirect('/');
             } catch (error) {
                 res.render('form-error-update', {
                     title: 'Update Book', 
@@ -105,7 +105,7 @@ module.exports = {
                 }
             });
 
-            res.redirect('/books');
+            res.redirect('/');
         })();
     }
 }

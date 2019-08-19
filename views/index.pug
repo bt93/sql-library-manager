@@ -20,6 +20,9 @@ block content
                     td= book.genre
                     td= book.year
     ul
-        - for (var index = 0; index < totalPages; index++)
+        - for (let index = 0; index <= totalPages; index++)
             li
-                a(href=`/books?page=${index + 1}`)= index + 1
+                if (index === currentPage - 1)
+                    a(href=`/books?page=${index + 1}` class="active")= index + 1
+                else
+                    a(href=`/books?page=${index + 1}`)= index + 1
