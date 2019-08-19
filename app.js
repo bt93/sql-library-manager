@@ -25,8 +25,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Route handlers
-app.get('/', (req, res) => res.redirect('/books'));
-app.get('/books', getHomePage);
+app.get('/', (req, res) => res.redirect('/books?page=1'));
+app.get('/books?', getHomePage);
 app.get('/books/new', getNewBook);
 app.get('/books/:id', getBookDetail);
 app.post('/books/new', postNewBook);

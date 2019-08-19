@@ -19,3 +19,7 @@ block content
                     td= book.author
                     td= book.genre
                     td= book.year
+    ul
+        - for (var index = 0; index < totalPages; index++)
+            li
+                a(href=`/books?page=${index + 1}`)= index + 1
