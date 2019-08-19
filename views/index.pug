@@ -11,6 +11,7 @@ block content
                 th Author
                 th Genre
                 th Year
+
         tbody
             each book in books
                 tr
@@ -21,13 +22,15 @@ block content
                     td= book.year
     div(class="pagination")
         ul
-            li
-                a(href=`/books?page=${currentPage -= 1}`) Prev
+            if (currentPage > 1)
+                li
+                    a(href=`/books?page=${page = currentPage - 1}`) Prev
             - for (let index = 0; index <= totalPages; index++)
                 li
-                    if (index === currentPage)
+                    if (index === currentPage - 1)
                         a(href=`/books?page=${index + 1}` class="active")= index + 1
                     else
                         a(href=`/books?page=${index + 1}`)= index + 1
-            li
-                a(href=`/books?page=${currentPage += 2}`) Next
+            if (currentPage <= Math.round(totalPages))
+                li
+                    a(href=`/books?page=${page = currentPage + 1}`) Next

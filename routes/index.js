@@ -6,6 +6,7 @@ module.exports = {
             const totalPages = await Book.count() / itemsPerPage;
             const currentPage = await req.query.page;
             const offset = (currentPage * itemsPerPage) - itemsPerPage;
+            let page = 0
 
             const books = await Book.findAll({offset: offset, limit: itemsPerPage});
             const booksPerPage = await books;
@@ -15,7 +16,8 @@ module.exports = {
                     title: "Books", 
                     books: books,
                     totalPages: totalPages,
-                    currentPage: currentPage
+                    currentPage: parseInt(currentPage),
+                    page: page
                 });
             } else {
                 res.render('page-not-found', {title: 'Page Not Found'});
