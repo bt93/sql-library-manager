@@ -106,3 +106,8 @@ input[type=text] {
   display: inline;
   margin: 1vh;
 }
+
+.pagination li a.active, 
+.pagination li a:hover {
+  color: black;
+}

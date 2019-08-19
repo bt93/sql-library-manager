@@ -22,12 +22,12 @@ block content
     div(class="pagination")
         ul
             li
-                a(href="#") Prev
+                a(href=`/books/?page=${currentPage -= 1}`) Prev
             - for (let index = 0; index <= totalPages; index++)
                 li
-                    if (index === currentPage - 1)
+                    if (index === currentPage)
                         a(href=`/books?page=${index + 1}` class="active")= index + 1
                     else
                         a(href=`/books?page=${index + 1}`)= index + 1
             li
-                a(href="#") Next
+                a(href=`/books/?page=${currentPage += 2}`) Next
