@@ -12,22 +12,26 @@ block content
         a(class="button" href="books/new") Create New Book
     p
         a(class="button", href="/books?page=1") Home
-    table
-        thead
-            tr
-                th Title
-                th Author
-                th Genre
-                th Year
-
-        tbody
-            each book in books
+    if (books.length > 0)
+        table
+            thead
                 tr
-                    td
-                        a(href=`books/${book.id}`)= book.title
-                    td= book.author
-                    td= book.genre
-                    td= book.year
+                    th Title
+                    th Author
+                    th Genre
+                    th Year
+
+            tbody
+                each book in books
+                    tr
+                        td
+                            a(href=`books/${book.id}`)= book.title
+                        td= book.author
+                        td= book.genre
+                        td= book.year
+    else
+        h2 No books match your search
+        h3 Try again
     div(class="pagination")
         ul
             if (currentPage > 1)
