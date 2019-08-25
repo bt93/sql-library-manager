@@ -1,5 +1,5 @@
 # SQL Library Manager
-Seventh project for the Treehouse Full-Stack JavaScript Techdegree. A library database management app using Node, express, sequelize, sqlite and pug. This CRUD app will allow you to view, create, edit and delete data on the sqlite database.
+Eighth project for the Treehouse Full-Stack JavaScript Techdegree. A library database management app using Node, express, sequelize, sqlite and pug. This CRUD app will allow you to view, create, edit and delete data on the sqlite database.
 
 # Get started
 1. First download the project files
